@@ -18,7 +18,7 @@
  *
  */
 function getCurrentFunctionName() {
-  throw new Error('Not implemented');
+  return 'getCurrentFunctionName';
 }
 
 /**
@@ -32,8 +32,12 @@ function getCurrentFunctionName() {
  *   getFunctionBody(hiHello) => "function hiHello() { console.log('hello world'); }"
  *
  */
-function getFunctionBody(/* func */) {
-  throw new Error('Not implemented');
+function getFunctionBody(func) {
+  if (typeof func !== 'function') {
+    return '';
+  }
+  const functionString = func.toString();
+  return functionString;
 }
 
 /**
@@ -50,8 +54,18 @@ function getFunctionBody(/* func */) {
  *  ]) => [0, 1, 2]
  *
  */
-function getArgumentsCount(/* funcs */) {
-  throw new Error('Not implemented');
+function getArgumentsCount(funcs) {
+  if (!Array.isArray(funcs)) {
+    return [];
+  }
+  const argumentsCount = funcs.map((func) => {
+    if (typeof func !== 'function') {
+      return [];
+    }
+    return func.length;
+  });
+
+  return argumentsCount;
 }
 
 /**
@@ -70,8 +84,11 @@ function getArgumentsCount(/* funcs */) {
  *   power05(16) => 4
  *
  */
-function getPowerFunction(/* exponent */) {
-  throw new Error('Not implemented');
+function getPowerFunction(exponent) {
+  const result = (num) => {
+    return num ** exponent;
+  };
+  return result;
 }
 
 /**
